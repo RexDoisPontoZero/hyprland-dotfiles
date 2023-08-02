@@ -1,0 +1,162 @@
+@import "colors.css";
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: alpha(@surface0, 0);
+    color: @text;
+}
+
+tooltip {
+    background: @surface0;
+    opacity: 1;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #11111b;
+}
+
+tooltip label{
+    color: @text;
+}
+
+#workspaces button {
+    padding: 5px;
+    color: @text;
+    margin-right: 5px;
+}
+
+#workspaces button.active {
+    color: @mauve;
+}
+
+#workspaces button.focused {
+    color: #a6adc8;
+    background: @maroon;
+    border-radius: 10px;
+}
+
+#workspaces button.urgent {
+    color: #11111b;
+    background: @green;
+    border-radius: 10px;
+}
+
+#workspaces button:hover {
+    background: #11111b;
+    color: @text;
+    border-radius: 10px;
+}
+
+#custom-launch_wofi,
+#custom-lock_screen,
+#custom-light_dark,
+#custom-power_btn,
+#custom-power_profile,
+#custom-weather,
+#window,
+#cpu,
+#disk,
+#custom-updates,
+#memory,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#tray,
+#temperature,
+#workspaces,
+#backlight,
+#custom-music,
+#custom-music2 {
+    background: @surface0;
+    opacity: 1;
+    padding: 0px 10px;
+    margin: 3px 0px;
+    border: 0px;
+    margin-top: 10px;
+}
+
+#clock {
+	padding: 0px 10px;
+    border-radius: 10px;
+}
+
+#tray, #custom-lock_screen, #backlight, #temperature,#custom-launch_wofi, #cpu {
+    border-radius: 10px 0px 0px 10px;
+    margin-left: 10px;
+    
+}
+
+#tray, #custom-power_btn, #workspaces, #pulseaudio.microphone, #battery, #disk, #custom-music2 {
+    border-radius: 0px 10px 10px 0px;
+    margin-right: 10px;
+}
+
+#temperature.critical {
+    color: #e92d4d;
+}
+
+#cpu {
+	color: @yellow;
+}
+
+#memory {
+    color: @red;
+}
+
+#disk {
+    color: @maroon;
+}
+
+#workspaces {
+    padding-right: 0px;
+    padding-left: 5px;
+}
+
+#custom-power_profile {
+    color: @green;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#window {
+    border-radius: 10px;
+}
+
+#custom-launch_wofi {
+    color: @blue;
+    margin-left: 10px;
+    border-right: 0px;
+}
+
+#pulseaudio {
+    color: @blue;
+    border-left: 0px;
+    border-right: 0px;
+    border-radius: 0px 0px 0px 0px;
+}
+
+#pulseaudio.microphone {
+    color: @mauve;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#battery {
+    color: @green;
+    border-left: 0px;
+}
+
+#tray {
+	border-radius: 10px;
+}
+#custom-light_dark, #custom-music {
+	border-radius: 10px;
+}

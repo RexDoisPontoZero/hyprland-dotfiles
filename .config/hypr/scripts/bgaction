@@ -1,0 +1,26 @@
+#!/usr/bin/bash
+
+#start swwww
+swww query || swww init
+
+#figure out which waybar theme is set
+if [ -f ~/.config/waybar/style/dark]; then
+	THEMEIS="dark"
+else
+	THEMEIS="light"
+fi
+
+#show the correct wallpapper based on the theme
+if [ $THEMEIS == "light" ]; then
+    swww img ~/.config/hypr/wallpaper-dark.jpg --transition-type none
+	gsettings set org.gnome.desktop.interface gtk-theme "Catppuccin-Mocha-Standard-Mauve-dark"
+	gsettings set org.gnome.desktop.interface icon-theme 'Tela-purple-dark'
+	gsettings set  org.gnome.desktop.interface cursor-theme 'Catppuccin-Mocha-Dark'
+	hyprctl keyword general:col.active_border 'rgb(cba6f7)'
+else
+    swww img ~/.config/hypr/latte.jpg --transition-type none
+	gsettings set org.gnome.desktop.interface icon-theme 'Tela-green'
+	gsettings set org.gnome.desktop.interface gtk-theme "Catppuccin-Latte-Standard-Green-light"
+	gsettings set  org.gnome.desktop.interface cursor-theme 'Catppuccin-Latte-Light'
+	hyprctl keyword general:col.active_border 'rgb(40a02b)'
+fi

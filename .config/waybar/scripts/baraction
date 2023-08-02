@@ -1,0 +1,57 @@
+#!/bin/sh
+
+# Check if "dark" or "light" theme files exist
+if [ -f ~/.config/waybar/style/dark ]; then
+    THEMEIS="dark"
+    rm ~/.config/waybar/style/dark
+    touch ~/.config/waybar/style/light
+else
+    THEMEIS="light"
+    rm ~/.config/waybar/style/light
+    touch ~/.config/waybar/style/dark
+fi
+
+rm .config/waybar/colors.css
+
+if [ $THEMEIS == "dark" ]; then
+    SWITCHTO="-dark"
+    ln -s ~/.config/waybar/style/mocha.css ~/.config/waybar/colors.css
+else
+    SWITCHTO="-light"
+    ln -s ~/.config/waybar/style/latte.css ~/.config/waybar/colors.css
+fi
+
+if [ $SWITCHTO == "-dark" ];then
+	#set the GTK theme
+	swww img ~/.config/hypr/wallpaper-dark.jpg --transition-type none
+	gsettings set org.gnome.desktop.interface gtk-theme "Catppuccin-Mocha-Standard-Mauve-dark" &
+	gsettings set org.gnome.desktop.interface icon-theme "Tela-purple-dark" &
+	gsettings set org.gnome.desktop.interface cursor-theme "Catppuccin-Mocha-Dark" &
+	cp ~/.config/VSCodium/User/settings-dark.json ~/.config/VSCodium/User/settings.json & 
+	cp ~/.config/alacritty/alacritty-dark.toml ~/.config/alacritty/alacritty.toml &
+	cp ~/.config/micro/settings-dark.json ~/.config/micro/settings.json &
+	cp ~/.config/rofi/catppuccin-dark.rasi ~/.config/rofi/catppuccin.rasi &
+	cp ~/.config/rofi/config-dark.rasi ~/.config/rofi/config.rasi &
+	pkill waybar
+	waybar &
+	hyprctl keyword general:col.active_border 'rgb(cba6f7)'
+	openrgb -p Purple
+		
+fi
+if [ $SWITCHTO == "-light" ];then
+	#set the GTK theme
+	swww img ~/.config/hypr/latte.jpg --transition-type none
+	gsettings set org.gnome.desktop.interface gtk-theme "Catppuccin-Latte-Standard-Green-light" &
+	gsettings set org.gnome.desktop.interface icon-theme "Tela-green" &
+	gsettings set org.gnome.desktop.interface cursor-theme "Catppuccin-Latte-Light" &
+	cp ~/.config/VSCodium/User/settings-light.json ~/.config/VSCodium/User/settings.json &
+	cp ~/.config/alacritty/alacritty-light.toml ~/.config/alacritty/alacritty.toml &
+	cp ~/.config/micro/settings-light.json ~/.config/micro/settings.json &
+	cp ~/.config/rofi/catppuccin-light.rasi ~/.config/rofi/catppuccin.rasi &
+	cp ~/.config/rofi/config-light.rasi ~/.config/rofi/config.rasi &
+	pkill waybar
+	waybar &
+	hyprctl keyword general:col.active_border 'rgb(40a02b)'
+	openrgb -p Green
+	
+fi
